@@ -1,6 +1,6 @@
 # Smart_First-aid-box
 
-   DL/ML 영상처리 + 소켓 통신 + 아두이노 제어
+   DL/ML 영상인식 + 음성인식 API + 소켓 통신 + 아두이노 제어
    
 ## 목차
    
