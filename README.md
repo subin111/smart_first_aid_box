@@ -40,11 +40,12 @@
    
    * 개발 환경
      
-<img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/eb1c4ab0-a25e-43dc-ac92-f4bc29263fad" width="500" height="700" />
+<img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/36cf25f7-3341-4d24-8a5c-551dd0051307" width="500" height="700" />
 
    * 전체 시스템 구성도
      
-<img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/d565c0e6-0ffd-4805-9b4a-5e3ca54fb5da" width="500" height="750" />
+<img src="![image](https://github.com/subin111/smart_first_aid_box/assets/143717650/91c58037-63ad-43b1-a74b-0cea5b3eba94)
+" width="500" height="750" />
 
    
 ## 4. 세부 시스템 별 개발 과정 및 기능
@@ -54,7 +55,7 @@
    
 Raspberry Pi Server는 음성을 인식하는 Raspberry Pi 모듈과 영상을 인식하는 Jetson Nano 모듈로부터 클라이언트 연결을 받아들여 명령어를 수신하는 중추적 역할을 한다. 이와 동시에, Arduino와의 통신에서는 마스터-슬레이브 관계를 형성하여 스마트 구급상자의 모터 제어를 담당한다. Arduino는 블루투스를 통해 Raspberry Pi로부터 명령어를 수신한다. 
     
-<img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/a73e51df-7ed4-4fd8-b2b6-1c5e2c60def2" width="150" height="300" />
+<img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/96cd8e72-dc6a-412f-8aee-752da0fe04a8" width="150" height="300" />
    
 클라이언트 간의 데이터 송수신을 위해 서버 소켓을 생성한다. 클라이언트가 접속하기 전까지 대기 상태를 유지하다가 클라이언트로부터 연결 요청이 들어오면 서버는 연결을 수락한다. 이 부분에서 보안을 위해 idpasswd.txt 파일을 만들어 인증된 클라이언트만 접속할 수 있도록 하였다. 인증된 클라이언트는 메시지를 서버에 전송할 수 있으므로 클라이언트 간의 송수신을 통해 다양한 접속기기로 Arduino를 제어하도록 했다.
    
@@ -62,14 +63,14 @@ Raspberry Pi Server는 음성을 인식하는 Raspberry Pi 모듈과 영상을 �
    
 Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담당한다. 웹캠으로 객체를 인식하고 인식된 결과를 문자열로 값을 바꾸어 Raspberry Pi Server와의 소켓 통신을 통해 문자열 값을 Arduino에 송신한다. 송신된 결괏값을 받으면 Arduino 제어가 가능하게 했다.
    
-   <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/9ebdd3e7-fcd3-41b6-8a31-94693291bf5e" width="550" height="300"/>
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/cb415e57-46fd-449a-aed5-57ee94204a39" width="550" height="300"/>
       
 * Ai modeling
 
   모델은 Roboflow를 이용하여 약 7300장의 상처 이미지 데이터를 수집하고 라벨링을 시행했다. 모델 유형은 객체 감지 유형이며, 베임, 화상, 벌레 물림 상처를 구분하기 위해 bites, burns, cuts 세 개의 데이터 클래스로 구성했다. Ultralytics YOLOv8을 이용하여 모델링을 진행하였으며 생성된 데이터 셋 형식을 구글 코랩에서 학습 시켰다. 학습의 정확도를 높이기 위해 Epoch는 100으로 지정하고 batch 사이즈는 일반적으로 많이 사용하는 16으로 지정하였다.
 
 
-   <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/70db5cc9-eec0-40c3-a5de-2ea95186373d" width="650" height="320"/>
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/f4506118-38f7-4ece-a56b-1319f0f46ef4" width="650" height="320"/>
 
    
 * 영상 처리
@@ -78,15 +79,15 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
   NVIDIA에서 개발한 Jetson Nano 단일 보드 AI 키트를 사용하였다. 상처 인식 과정에서, 카메라는 사용자의 상처를 실시간으로 캡처하여 LCD 화면을 통해 GUI와 함께 보여준다. 사용자는 마우스를 사용하여 LCD의 GUI 버튼을 조작하도록 하였다.
 
   
-  <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/3aa7617f-b335-4811-ac91-498d08dcd5d0" width="430" height="300"/>
+  <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/50806014-7b13-4885-8474-7d78c9041782" width="430" height="300"/>
 
    
   상처 인식을 원할 때는 ‘Resume’ 버튼을 누르면 된다. 상처가 인식되고 '진단' 버튼을 누르면, GUI에는 해당 상처의 종류와 필요한 약품 정보가 표시된다. 예를 들어, 화상 상처의 경우 연고와 밴드를, 벌레 물린 상처에는 전용 약품을, 베인 상처에는 밴드를 제공하도록 설정하였다.
 
   진단 버튼을 누르면 Jetson Nano는 연결된 Raspberry Pi 서버로 모터 구동 명령어를 전송한다. 이 명령어는 Raspberry Pi를 통해 Arduino에 연결되며, Arduino는 명령에 따라 모터를 구동하여 적절한 약품을 스마트 구급상자에서 출력하도록 한다. 이 과정을 통해 사용자는 자신의 상처에 가장 적합한 치료를 신속하게 받을 수 있다.
 
-  <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/3e1a25b0-2563-45fc-8f06-2562dac3c7e4" width="640" height="300"/>
-  <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/b952e1f8-f64a-4d6e-b63f-0710c9c41753" width="320" height="295"/>
+  <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/45755288-6eb5-424e-aa8e-a09115f2b40b" width="640" height="300"/>
+  <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/2c86f9b2-b1af-4ccb-bbf8-fe83b6f6a844" width="320" height="295"/>
 
   
 ### 3. Raspberry Pi (Client)
@@ -94,12 +95,12 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
    
    Raspberry Pi에 마이크와 스피커를 연결하여 핫 워드를 인식시키면 Raspberry Pi Server와의 소켓 통신을 통해 문자열 값을 Arduino에 송신한다. 송신된 결괏값을 받으면 Arduino 제어가 가능하게 했다.
    
-<img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/0b4b80e7-2898-4be8-b379-039d6d519d4e" width="550" height="350" />
+<img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/a73a5b6c-b478-4921-adcd-7804d29dc20c" width="550" height="350" />
 
 
    음성 인식용 Raspberry Pi 보드는 사용자의 증상에 따른 해결책과 약품 제공을 위해 음성 인식 기술을 활용한다. 사용자가 ‘아파’라는 핫워드를 통해 증상을 말하면, 모듈은 증상을 인식하고 해당 정보를 바탕으로 Arduino에 명령어를 전송합니다. 이 명령에 따라, 스피커는 증상에 맞는 해결책을 포함한 음성 파일을 재생하며, 스마트 구급상자는 필요한 약품을 제공한다.
 
-   <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/e2c98a12-0019-4148-a606-412b06ff4bb2" width="550" height="350" />
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/0ea85299-1a4c-47ba-aac0-87aed6c83a28" width="550" height="350" />
 
 
    또한, 음성 인식 기능은 구글 API로 구현되어 있어 한국어가 아닌 해외 다른 외국어를 등록시켜 사용할 수 있어 언어의 장벽 또한 없앨 수 있다. 이를 통해 다양한 사용자가 손쉽고 빠르게 적절한 해결책과 약품을 얻을 수 있도록 했다.
@@ -110,7 +111,7 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
    Raspberry Pi Server와의 소켓 통신을 통해 Arduino에 데이터를 송신하면 Arduino에 수신된 값에 따라 설정된 제어시스템이 활성화된다. 수신 받은 명령어에 따라 레일 혹은 여닫이문을 제어하여 사용자에게 알맞은 약품을 제공할 수 있도록 한다.
 
    
-   <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/dc1216dc-7138-489e-934e-cd240547995e" width="500" height="600" />
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/20309841-b226-49d9-99d9-628865ecb6d6" width="500" height="600" />
 
    Raspberry Pi Server를 통해 수신된 정보가 문 열림을 필요로 한다면, 시스템은 먼저 적외선 센서로 약품의 존재 여부를 감지한다. 감지 되는 경우 서보모터가 작동하여 문을 열고 약품을 꺼낸 후 다시 넣으면 센서가 이를 감지하고 7초 뒤에 문을 자동으로 닫는다. 만약 수신된 데이터가 레일 작업을 요구한다면, 해당 작업은 레일 모터 시스템으로 전달된다. 이때, 레일 모터는 특정 조합에 따라 작동하여 물체를 이동시킨다. 만약 레일이 작동하여 물체가 아래로 떨어져 적외선센서에 물체가 인식되지 않으면 레일이 정지하게 된다.
    
@@ -122,7 +123,7 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
 
      
 
-     <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/43f875b4-b778-4b71-b93b-d05ba73fe04c" width="600" height="370" />
+     <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/bb3610ab-be90-4601-b0bb-bab284181822" width="600" height="370" />
 
      
   MOTOR 명령어를 받았다면, 해당 레일을 선택하여 레일의 이동 방향 끝에 달린 IR 센서의 출력값이 0->1->0으로 변하면 서보형 DC모터가 구동을 멈추게 한다. 레일 위에는 여러 개의 약품이 간격을 둔 상태로 올려져 있으며, 한 개의 약품만을 떨어뜨릴 것이다. 이를 위해 약품이 감지되기 전(0, 약품이 아직 센서에 감지되지 않음) -> 감지 된 상태(1, 약품이 센서를 지나 밖으로 떨어지는 중) -> 다시 감지되지 않음(0, 약품 떨어지고 그 다음 약품은 일정 간격 뒤에 위치하는 상태)으로 시나리오를 설정했다. 
@@ -130,7 +131,7 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
   
    * 여닫이 문 제어
 
-     <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/24210903-2bc5-49e4-98bf-7de8355d476c" width="600" height="370" />
+     <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/198e4c18-a74b-412a-a38c-e299742f8035" width="600" height="370" />
 
      여닫이문은 레일과는 반대로 수납공간에 위치한 IR 센서의 출력값이 1->0->1로 변하면 110° 회전(명령어를 받고 문이 열려있는 상태)해 있던 서보모터가 다시 원위치(문이 닫혀있는 상태)로 돌아오도록 구성하였다. 약품이 수납공간에 보관되어 있는 상태(1, 초기 상태) -> 문이 열린 후 약품을 밖으로 꺼내 사용(0, 수납공간 안에 물체가 없는 상태) -> 사용한 약품을 다시 수납(1)으로 이러한 상태 변화가 일어나면 문이 닫힌다.
 
@@ -142,13 +143,13 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
    
    ### 1. 작품 외관
 
-   <img src="https://github.com/subin111/Smart_First-aid-kit/assets/143717650/8ef223a6-1ae4-43cf-91bf-ccbc15ab4545" width="300" height="400" />
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/fd603704-b8b0-4b8f-bf78-7c3930496d66" width="300" height="400" />
 
    
    ### 2. 시연 영상
 
 
-   <img src="https://github.com/subin111/Smart_First-aid-box/assets/143717650/515b98b4-cfe7-4648-9659-42c047d33880" width="250" height="250" />
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/326f0fb3-b4ef-4ffb-8d06-09b8f56d7dc1" width="250" height="250" />
 
 
    
