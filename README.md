@@ -46,8 +46,7 @@
 
    * 전체 시스템 구성도
      
-<img src="![image](https://github.com/subin111/smart_first_aid_box/assets/143717650/91c58037-63ad-43b1-a74b-0cea5b3eba94)
-" width="500" height="750" />
+<img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/91c58037-63ad-43b1-a74b-0cea5b3eba94" width="500" height="750" />
 
    
 ## 4. 세부 시스템 별 개발 과정 및 기능
