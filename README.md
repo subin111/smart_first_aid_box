@@ -111,7 +111,7 @@ Jetson Nano는 머신 러닝을 이용해 객체를 감지하는 역할을 담�
    
    Raspberry Pi Server와의 소켓 통신을 통해 Arduino에 데이터를 송신하면 Arduino에 수신된 값에 따라 설정된 제어시스템이 활성화된다. 수신 받은 명령어에 따라 레일 혹은 여닫이문을 제어하여 사용자에게 알맞은 약품을 제공할 수 있도록 한다.
 
-   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/c2f84354-8474-417c-ad51-eabdb220a454" width="500" height="400" />
+   <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/c2f84354-8474-417c-ad51-eabdb220a454" width="650" height="400" />
 
    <img src="https://github.com/subin111/smart_first_aid_box/assets/143717650/20309841-b226-49d9-99d9-628865ecb6d6" width="500" height="600" />
 
